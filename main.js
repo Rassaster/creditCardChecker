@@ -58,7 +58,7 @@ const stringToArray = () => {
       batchCopy.push(batch[i]);
     }
     if ((typeof batch[i]) === 'string') {
-      batchCopy.push(Array.from(String(batch[i]), Number));
+      batchCopy.push(Array.from(String(batch[i]), Number)); //Should push all the elements of batch[] as object-type arrays in batchCopy[].
     }
   }
 }
@@ -90,17 +90,17 @@ const validateCred = () => {
       invalidCreditCard.push(batchCopy[b]);
     }
   }
-  console.log(validCreditCard);
-  console.log(`The following are the Valid Credit Cards: ${validCreditCard.join((' <-✓✓✓-> '))}`);
-  console.log(invalidCreditCard);
-  console.log(`The following are the Invalidad Credit Cards: ${invalidCreditCard.join(' <-xxx-> ')}`);
+  console.log(validCreditCard); //Should print the Array of valid Credit Cards.
+  console.log(`The following are the Valid Credit Cards: ${validCreditCard.join((' <-✓✓✓-> '))}`); //Should print the the numbers of valid Credit Cards separated by ' <-✓✓✓-> '. 
+  console.log(invalidCreditCard); //Should print the Array of invalid Credit Cards.
+  console.log(`The following are the Invalidad Credit Cards: ${invalidCreditCard.join(' <-xxx-> ')}`); //Should print the the numbers of invalid Credit Cards separated by ' <-✓✓✓-> '.
 }
 
 //idInvalidCompanies() determines, based in the initial digit of the credit card numbers, from which companies are the invalid credit cards,
 //stored in the invalidCreditCard[] Array. This is made through a control-flow with the if...else-statement, and using the .indexOf() method
 //inside an if-statement nested in a foor-loop to guarentee no repetition in returning the Credit Card Companies.
 let idInvalidCompanies = () => {
-  let companies = [];
+  const companies = [];
   for (i = 0; i <= (invalidCreditCard.length -1); i++) {
     let invalidScopeCard = invalidCreditCard[i].slice();
     if (invalidScopeCard[0] === 3) {
@@ -114,11 +114,13 @@ let idInvalidCompanies = () => {
     } else {
       companies.push('Company not found');
     }
+    //Invalid Credit Cards should have beev associated with its Companies, and those Companies have been pushed to the companies[] Array.
   }
   for (i = 0; i <= (companies.length-1); i++) {
     if (companiesInvalidNoRepeat.indexOf(companies[i]) === -1) {
       companiesInvalidNoRepeat.push(companies[i]);
     }
+    //This for-loop and the .indexOf() method, checks the repeated Companies in companies[], and pushes them to the companiesInvalidNoRepeat[] Array.
   }
   console.log(`The following are the companies that holds invalid Credit Cards: ${companiesInvalidNoRepeat.join(', ')}`);
 }
