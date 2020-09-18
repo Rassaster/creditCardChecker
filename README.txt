@@ -1,1 +1,1 @@
-Credit Card Checker Repository
+Credit Card Checker - Coding Challenge
